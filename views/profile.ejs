@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <%- include('./partials/head') %>
+
+    <title>Document</title>
+</head>
+<body>
+    <%- include('./partials/nav') %>
+
+    profile page
+
+    <div class="mt-3">
+        <% blogs.reverse().forEach(blog=> { %>
+            <div class="card" style="width: 18rem;">
+                <img src="<%= blog.coverImageURL %>" class="card-img-top" >
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <%= blog.title %>
+                    </h5>
+                    <p class="card-text">
+                        <%= blog.body %>
+                    </p>
+                    <a href="/blog/view/<%= blog._id %>" class="btn btn-primary">view</a>
+                    <a href="/blog/edit/<%= blog._id %>" class="btn btn-primary">edit</a>
+                </div>
+            </div>
+    
+            <% }) %>
+    </div>
+
+
+    <% if (locals.user) { %>
+        <%= JSON.stringify(user) %>
+            <% } %>
+    <%- include('./partials/script') %> 
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <%- include('./partials/head') %>
+
+    <title>Document</title>
+</head>
+<body>
+    <%- include('./partials/nav') %>
+
+    profile page
+    <div>
+
+        <h2 class="card-title">
+            <%= blog.title %>
+        </h2>
+        <h2 class="card-title">
+            <%= blog.body %>
+        </h2>
+
+       
+    </div>
+    
+
+
+    <% if (locals.user) { %>
+        <%= JSON.stringify(user) %>
+            <% } %>
+    <%- include('./partials/script') %> 
+</body>
+</html>

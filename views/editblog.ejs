@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <%- include('./partials/head') %>
+
+    <title>Document</title>
+</head>
+<body>
+    <%- include('./partials/nav') %>
+
+    profile page
+    <div>
+
+        <h2 class="card-title">
+            <%= blog.title %>
+        </h2>
+        <h2 class="card-title">
+            <%= blog.body %>
+        </h2>
+
+       
+    </div>
+
+    <div class="container mt-3">
+        <form action="/blog" method="post" enctype="multipart/form-data">
+            <!-- <div class="mb-3">
+                <label for="coverImage" class="form-label">coverImage</label>
+                <input name="coverImageURL" type="file" class="form-control" id="coverImage" aria-describedby="coverImage">
+                
+            </div> -->
+            <div class="mb-3">
+                <label for="title" class="form-label">title</label>
+                <input value="<%= blog.title %>" name="title" type="text" class="form-control" id="title" aria-describedby="title">
+             
+            </div>
+            <div class="mb-3">
+                <label for="body">body</label>
+                <textarea  name="body" class="form-control" placeholder="Leave a comment here" id="body"><%= blog.body %></textarea>
+              </div>
+              <div class="mb-3">
+                <button>submit</button>
+              </div>
+        </form>
+
+    </div>
+
+
+</html>

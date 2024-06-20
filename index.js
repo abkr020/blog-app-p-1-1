@@ -1,11 +1,16 @@
 require('dotenv').config()
-const path = require('path');
-const viewsPath = path.join(__dirname, 'views');
-app.set("view engine", "ejs")
-
 const express = require('express')
 const app = express()
 const port = 3000
+
+const path = require('path');
+app.set('views', path.join(__dirname, 'views'));
+
+// const path = require('path');
+// const viewsPath = path.join(__dirname, 'views');
+app.set("view engine", "ejs")
+
+
 
 const connect_db = require("./db/index.js")
 connect_db();

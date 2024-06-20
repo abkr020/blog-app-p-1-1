@@ -1,5 +1,7 @@
 require('dotenv').config()
 const path = require('path');
+const viewsPath = path.join(__dirname, 'views');
+app.set("view engine", "ejs")
 
 const express = require('express')
 const app = express()
@@ -14,10 +16,8 @@ const blogRoute = require("./routes/blog.route.js");
 const { checkForAuthenticationCookie } = require('./middlewares/authentication.js');
 const BlogModel = require('./models/blog.module.js');
 
-app.set("view engine", "ejs")
-const viewsPath = path.join(__dirname, 'views');
-app.set('views', viewsPath);
-console.log(`Views directory set to: ${viewsPath}`); // Log the views path to verify
+// app.set('views', viewsPath);
+// console.log(`Views directory set to: ${viewsPath}`); // Log the views path to verify
 
 // app.set('views', path.join(__dirname, 'views'));
 // app.set('views', path.resolve(__dirname, 'views'));

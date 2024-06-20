@@ -15,7 +15,11 @@ const { checkForAuthenticationCookie } = require('./middlewares/authentication.j
 const BlogModel = require('./models/blog.module.js');
 
 app.set("view engine", "ejs")
-app.set('views', path.join(__dirname, 'views'));
+const viewsPath = path.join(__dirname, 'views');
+app.set('views', viewsPath);
+console.log(`Views directory set to: ${viewsPath}`); // Log the views path to verify
+
+// app.set('views', path.join(__dirname, 'views'));
 // app.set('views', path.resolve(__dirname, 'views'));
 
 

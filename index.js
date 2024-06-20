@@ -15,8 +15,8 @@ const { checkForAuthenticationCookie } = require('./middlewares/authentication.j
 const BlogModel = require('./models/blog.module.js');
 
 app.set("view engine", "ejs")
-// app.set('views', path.join(__dirname, 'views'));
-app.set('views', path.resolve(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'views'));
+// app.set('views', path.resolve(__dirname, 'views'));
 
 
 app.use(express.urlencoded({ extended: true }))

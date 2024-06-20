@@ -31,7 +31,7 @@
 
 
     <% if (locals.user) { %>
-        <%= JSON.stringify(user) %>
+        <%= JSON.stringify(user.fullname) %>
             <% } %>
     <%- include('./partials/script') %> 
 </body>

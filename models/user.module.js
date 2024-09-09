@@ -20,10 +20,10 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true,
     },
-    // password2: {
-    //     type: String,
-    //     required: true,
-    // },
+    password2: {
+        type: String,
+        required: true,
+    },
     profileImageURL: {
         type: String,
         default: '/public/images/0d64989794b1a4c9d89bff571d3d5842.jpg',

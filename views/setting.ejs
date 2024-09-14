@@ -1,35 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-        <%- include('./partials/head') %>
+  <%- include('./partials/head') %>
 
     <title>Document</title>
 </head>
+
 <body>
-    <%- include('./partials/nav') %>
+  <%- include('./partials/nav') %>
 
-    setting  page
+    setting page
+    <div>
+      <!-- <li class="nav-item">
+      <a class="nav-link" href="/blog/add-new">add blog</a>
+    </li> -->
+      <!-- <a class="nav-link" href="/user/vfpc">change password</a> -->
+      <!-- <a class="nav-link" href="/user/setting/vfpcs" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: white; text-align: center; border-radius: 5px; text-decoration: none;">Change Password</a> -->
+      <form action="/user/setting/otp-send" method="POST">
+        <button type="submit"
+          style="padding: 10px 20px; background-color: #37c263; color: white; border: none; border-radius: 5px; cursor: pointer;">
+          Change Password
+        </button>
+      </form>
 
-  <h1>Change Password</h1>
-  <form action="/user/change-password" method="POST">
-    <div>
-      <label for="currentPassword">Current Password:</label>
-      <input type="password" id="currentPassword" name="currentPassword" required>
+
+
+      <!-- <h1>Change Password</h1>
+      <form action="/user/change-password" method="POST">
+         <div>
+        <label for="currentPassword">Current Password:</label>
+        <input type="password" id="currentPassword" name="currentPassword" required>
+      </div> 
+        <div>
+          <label for="newPassword">New Password:</label>
+          <input type="password" id="newPassword" name="newPassword" required>
+        </div>
+        <div>
+        <label for="confirmPassword">Confirm New Password:</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" required>
+      </div> 
+        <button type="submit">Change Password</button>
+      </form> -->
     </div>
-    <div>
-      <label for="newPassword">New Password:</label>
-      <input type="password" id="newPassword" name="newPassword" required>
-    </div>
-    <div>
-      <label for="confirmPassword">Confirm New Password:</label>
-      <input type="password" id="confirmPassword" name="confirmPassword" required>
-    </div>
-    <button type="submit">Change Password</button>
-  </form>
 
 
 
 
     <%- include('./partials/script') %>
 </body>
+
 </html>

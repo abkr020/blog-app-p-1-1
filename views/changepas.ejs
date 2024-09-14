@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <%- include('./partials/head') %>
+
+    <title>Document</title>
+</head>
+<body>
+    <%- include('./partials/nav') %>
+
+    password change  page
+    <div>
+     
+
+    <h1>Change Password</h1>
+    <form action="/user/setting/change-password" method="POST">
+      <!-- <div>
+        <label for="currentPassword">Current Password:</label>
+        <input type="password" id="currentPassword" name="currentPassword" required>
+      </div> -->
+      <div>
+        <label for="newPassword">New Password:</label>
+        <input type="password" id="newPassword" name="newPassword" required>
+      </div>
+      <!-- <div>
+        <label for="confirmPassword">Confirm New Password:</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" required>
+      </div> -->
+      <button type="submit">Change Password</button>
+    </form>
+    </div>
+
+
+
+
+    <%- include('./partials/script') %>
+</body>
+</html>

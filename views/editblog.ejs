@@ -22,7 +22,8 @@
     </div>
 
     <div class="container mt-3">
-        <form action="/blog" method="post" enctype="multipart/form-data">
+        <form action="/blog/edit/update/<%= blog._id %>" method="post" enctype="multipart/form-data">
+        <!-- <form action="/blog" method="post" enctype="multipart/form-data"> -->
             <!-- <div class="mb-3">
                 <label for="coverImage" class="form-label">coverImage</label>
                 <input name="coverImageURL" type="file" class="form-control" id="coverImage" aria-describedby="coverImage">

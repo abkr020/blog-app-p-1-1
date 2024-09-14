@@ -12,6 +12,10 @@ const userSchema = mongoose.Schema({
         required: true,
         unique: true,
     },
+    // otp:Number,
+    otp:Number,
+    otpExpires: Date,
+    isVerified: Boolean,
     salt: {
         type: String,
 
@@ -20,10 +24,10 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true,
     },
-    // password2: {
-    //     type: String,
-    //     required: true,
-    // },
+    password2: {
+        type: String,
+        required: true,
+    },
     profileImageURL: {
         type: String,
         default: '/public/images/0d64989794b1a4c9d89bff571d3d5842.jpg',
@@ -56,16 +60,23 @@ userSchema.pre('save', function (next) {
 userSchema.static("matchpasswordAndGenerateToken", async function (email, password) {
     // console.log(this)
     const user = await this.findOne({ email })
-    if (!user) throw new Error("no user founfd - user.module.js")
+    
+    if (!user) throw new Error("no user founfd -- user.module.js")
+
+    console.log("found the email now will check the isvarified is true or not --user.module.js")
+
+    if (user.isVerified==false) throw new Error("user not varified - user.module.js")
     const salt = user.salt;
     const hashpassword = user.password;
+    console.log("user varified now check password -- user.module.js")
     
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      throw new Error("Password does not match - user.module.js");
+        throw new Error("Password does not match - user.module.js");
     }
-
-
+    
+    console.log("user password match now create token and return -- user.module.js")
+    
     const token = createTokenForuser(user)
 
     return token;

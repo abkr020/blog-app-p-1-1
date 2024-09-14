@@ -1,5 +1,7 @@
 const jwt = require('jsonwebtoken')
-const secret = "uperman"
+const dotenv = require("dotenv");
+dotenv.config();
+const secret = process.env.SECRET_FOR_JWT_CREATE_TOKEN;
 function createTokenForuser(user) {
     const paylode = {
         _id : user._id,
@@ -16,6 +18,7 @@ function validateToken(token) {
     return paylode
 
 }
+
 
 module.exports = {
     createTokenForuser,

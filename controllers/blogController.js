@@ -10,8 +10,9 @@ const renderAddNewBlog = (req, res) => {
 
 
 const createNewBlog = async (req, res) => {
-    console.log("File upload single complete");
-    console.log(req.body);
+    console.log("Request received for creating a new blog");
+    console.log("Request Body:", req.body); // Log request body
+    console.log("Uploaded File:", req.file); // Log uploaded file details
 
     let { title, body } = req.body;
     let coverImageURL = null;
@@ -20,6 +21,7 @@ const createNewBlog = async (req, res) => {
     if (req.file) {
         try {
             // Upload to Cloudinary
+            console.log("Uploading to Cloudinary...");
             const result = await cloudinary.uploader.upload(req.file.path);
             coverImageURL = result.secure_url; // Get the URL from Cloudinary
             console.log("Uploaded to Cloudinary:", coverImageURL);
@@ -38,6 +40,7 @@ const createNewBlog = async (req, res) => {
 
     // Check if title and body are provided
     if (!title || !body) {
+        console.warn("Missing title or body");
         return res.status(400).send("Title and body are required.");
     }
 
@@ -49,6 +52,7 @@ const createNewBlog = async (req, res) => {
             createdBy: req.user._id
         });
         
+        console.log("Blog created successfully:", blog);
         res.redirect("/");
     } catch (error) {
         console.error("Error creating blog:", error);

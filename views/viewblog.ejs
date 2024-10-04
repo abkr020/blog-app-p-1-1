@@ -5,18 +5,32 @@
 
     <title>Document</title>
 </head>
+<style>
+    body {
+          background-color: black;
+          color: white;
+      }
+  </style>
 <body>
     <%- include('./partials/nav') %>
 
     profile page
+
     <div>
 
-        <h2 class="card-title">
-            <%= blog.title %>
-        </h2>
-        <h2 class="card-title">
-            <%= blog.body %>
-        </h2>
+        <div class="card" style="width: 18rem;">
+                    <img src="<%= blog.coverImageURL %>" class="card-img-top" />
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <%= blog.title %>
+                        </h5>
+                        <p class="card-text">
+                            <%= blog.body %>
+                        </p>
+
+
+                    </div>
+                </div>
 
        
     </div>

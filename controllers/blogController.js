@@ -8,42 +8,6 @@ const renderAddNewBlog = (req, res) => {
     res.render('addyourblog', { user: req.user });
 };
 
-// Controller to handle new blog creation
-// const createNewBlog = async (req, res) => {
-//     console.log("File upload single complete");
-//     console.log(req.body);
-
-//     let { title, body } = req.body;
-
-//     // Initialize coverImageURL
-//     let coverImageURL;
-
-//     // Check if a file was uploaded
-//     if (req.file) {
-//         coverImageURL = `/images/uploads/${req.file.filename}`;
-//         console.log("Uploaded file:", req.file);
-//     } else {
-//         coverImageURL = null; // Or set it to an empty string or a default image URL
-//         console.warn("No file uploaded, coverImageURL set to null.");
-//     }
-
-//     try {
-//         let blog = await BlogModel.create({
-//             title,
-//             body,
-//             coverImageURL, // Save the file path in the database (will be null if no file)
-//             createdBy: req.user._id
-//         });
-        
-//         res.redirect("/");
-//     } catch (error) {
-//         console.error("Error creating blog:", error);
-//         res.status(500).send("An error occurred while creating the blog.");
-//     }
-// };
-
-
-// Controller to view a single blog by ID
 
 const createNewBlog = async (req, res) => {
     console.log("File upload single complete");
@@ -72,6 +36,11 @@ const createNewBlog = async (req, res) => {
         console.warn("No file uploaded, coverImageURL set to null.");
     }
 
+    // Check if title and body are provided
+    if (!title || !body) {
+        return res.status(400).send("Title and body are required.");
+    }
+
     try {
         let blog = await BlogModel.create({
             title,
@@ -86,6 +55,7 @@ const createNewBlog = async (req, res) => {
         res.status(500).send("An error occurred while creating the blog.");
     }
 };
+
 
 
 
@@ -105,32 +75,6 @@ const renderEditBlog = async (req, res) => {
         blog
     });
 };
-
-// Controller to update blog with title, body, and optional image
-// const updateBlog = async (req, res) => {
-//     try {
-//         let blog = await BlogModel.findById(req.params.id);
-
-//         let { title, body } = req.body;
-//         let updateFields = { title, body };
-
-//         // If a new image is uploaded, update the coverImageURL
-//         if (req.file) {
-//             updateFields.coverImageURL = `/images/uploads/${req.file.filename}`;
-//         }
-
-//         await BlogModel.findOneAndUpdate(
-//             { _id: blog._id },
-//             updateFields,
-//             { new: true }
-//         );
-
-//         res.redirect("/user/profile");
-//     } catch (err) {
-//         console.error("Error updating the blog post:", err);
-//         res.status(500).send("An error occurred while updating the blog post.");
-//     }
-// };
 const updateBlog = async (req, res) => {
     try {
         // Find the existing blog by its ID

@@ -27,6 +27,8 @@ const BlogModel = require('./models/blog.module.js');
 // app.set('views', path.join(__dirname, 'views'));
 // app.set('views', path.resolve(__dirname, 'views'));
 
+// app.use(express.static(path.resolve('./public/uploads')))
+app.use(express.static(path.resolve('./public')))
 
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieparser())

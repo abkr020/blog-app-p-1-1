@@ -1,10 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Verify OTP</title>
-    <link rel="stylesheet" href="/styles.css">
+    <%- include('./partials/head') %>
+
 </head>
+<style>
+    body {
+          background-color: black;
+          color: white;
+      }
+  </style>
 <body>
+    <%- include('./partials/nav') %>
+
     <h1>Verify OTP</h1>
     <form action="/user/setting/vfpc" method="post">
         <!-- <label for="email">Email:</label>

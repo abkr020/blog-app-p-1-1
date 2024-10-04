@@ -1,33 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-        <%- include('./partials/head') %>
 
-    <title>Document</title>
+<head>
+    <%- include('./partials/head') %>
+
+        <title>Document</title>
 </head>
+<style>
+    body {
+        background-color: black;
+        color: white;
+
+    }
+    .card-container {
+    display: flex;      
+    flex-wrap: wrap;    
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.card {
+            margin: 10px; /* Optional: space between cards */
+            width: 18rem; /* Fixed width for each card */
+        }
+</style>
+
 <body>
+
+
     <%- include('./partials/nav') %>
 
-    home page
-    <div class="mt-3">
-    <% blogs.reverse().forEach(blog=> { %>
-        <div class="card" style="width: 18rem;">
-            <img src="<%= blog.coverImageURL %>" class="card-img-top" >
-            <div class="card-body">
-                <h5 class="card-title">
-                    <%= blog.title %>
-                </h5>
-                <p class="card-text">
-                    <%= blog.body %>
-                </p>
-                <a href="/blog/view/<%= blog._id %>" class="btn btn-primary">view</a>
-            </div>
+    <h1>Home Page</h1>
+        <div class="card-container">
+
+
+                <% blogs.reverse().forEach(blog=> { %>
+                    <div class="card" >
+                        <img src="<%= blog.coverImageURL %>" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <%= blog.title %>
+                            </h5>
+                            <p class="card-text">
+                                <%= blog.body %>
+                            </p>
+                            <a href="/blog/view/<%= blog._id %>" class="btn btn-primary">view</a>
+                        </div>
+                    </div>
+
+                    <% }) %>
+
         </div>
 
-        <% }) %>
-</div>
 
-
-    <%- include('./partials/script') %>
+        <%- include('./partials/script') %>
 </body>
+
 </html>

@@ -1,25 +1,33 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <%- include('./partials/head') %>
 
 </head>
 <style>
     body {
-          background-color: black;
-          color: white;
-      }
-  </style>
+        background-color: black;
+        color: white;
+    }
+    .container {
+            margin-top: 56px; /* This value can be adjusted based on your navbar height */
+        }
+</style>
+
 <body>
     <%- include('./partials/nav') %>
+        <div class="container">
 
-    <h1>Verify OTP</h1>
-    <form action="/user/setting/vfpc" method="post">
-        <!-- <label for="email">Email:</label>
+            <h1>Verify OTP</h1>
+            <form action="/user/setting/vfpc" method="post">
+                <!-- <label for="email">Email:</label>
         <input type="email" id="email" name="email" required> -->
-        <label for="otp">OTP:</label>
-        <input type="text" id="otp" name="otp" required>
-        <button type="submit">Verify</button>
-    </form>
+                <label for="otp">OTP:</label>
+                <input type="text" id="otp" name="otp" required>
+                <button type="submit">Verify</button>
+            </form>
+        </div>
 </body>
+
 </html>

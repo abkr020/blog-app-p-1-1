@@ -3,56 +3,81 @@
 
 <head>
     <%- include('./partials/head') %>
+    <title>Profile Page</title> <!-- Updated title for clarity -->
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            margin-top: 56px; /* Space for fixed navbar */
+        }
 
-        <title>Document</title>
+        h1 {
+            text-align: center; /* Center the heading */
+            margin: 20px 0; /* Space above and below the heading */
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 0 auto; /* Center the card container */
+            max-width: 1200px; /* Optional: Set a max width for better layout */
+        }
+
+        .card {
+            margin: 10px; 
+            width: 18rem; /* Fixed width for each card */
+            background-color: #1c1c1c; /* Optional: Background color for cards */
+            color: white;
+
+            border-radius: 5px; /* Optional: Rounded corners */
+            overflow: hidden; /* Hide overflow from images */
+        }
+
+        .card img {
+            height: 200px; /* Set a fixed height */
+            width: 100%; /* Allow the width to adjust */
+            object-fit: contain; /* Ensures the entire image is visible */
+        }
+
+        .card-body {
+            padding: 15px; /* Add some padding to the card body */
+        }
+    </style>
 </head>
-<style>
-    body {
-        background-color: black;
-        color: white;
-    }
-    .card-container {
-        display: flex;      
-        flex-wrap: wrap;    
-        justify-content: space-between;
-        margin-top: 20px; /* Optional: Add space above the card container */
-    }
-    .card {
-        margin: 10px; 
-        width: 18rem; 
-    }
-
-</style>
 
 <body>
     <%- include('./partials/nav') %>
 
-        profile page
+    <h1>Profile Page</h1> <!-- Added a heading for clarity -->
 
-        <div class="card-container">
-            <% blogs.reverse().forEach(blog=> { %>
-                <div class="card" style="width: 18rem;">
-                    <img src="<%= blog.coverImageURL %>" class="card-img-top" />
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            <%= blog.title %>
-                        </h5>
-                        <p class="card-text">
-                            <%= blog.body %>
-                        </p>
-                        <a href="/blog/view/<%= blog._id %>" class="btn btn-primary">view</a>
-                        <a href="/blog/edit/<%= blog._id %>" class="btn btn-primary">edit</a>
-                    </div>
+    <div class="card-container">
+        <% blogs.reverse().forEach(blog => { %>
+            <div class="card">
+                <img src="<%= blog.coverImageURL %>" class="card-img-top" alt="<%= blog.title %>"> <!-- Added alt attribute -->
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <%= blog.title %>
+                    </h5>
+                    <p class="card-text">
+                        <%= blog.body %>
+                    </p>
+                    <a href="/blog/view/<%= blog._id %>" class="btn btn-primary">View</a>
+                    <a href="/blog/edit/<%= blog._id %>" class="btn btn-primary">Edit</a>
                 </div>
+            </div>
+        <% }) %>
+    </div>
 
-                <% }) %>
+    <% if (locals.user) { %>
+        <div class="container mt-4">
+            <div class="alert alert-info" role="alert">
+                Logged in as: <%= JSON.stringify(user.fullname) %> <!-- Display the user's full name -->
+            </div>
         </div>
+    <% } %>
 
-
-        <% if (locals.user) { %>
-            <%= JSON.stringify(user.fullname) %>
-                <% } %>
-                    <%- include('./partials/script') %>
+    <%- include('./partials/script') %>
 </body>
 
 </html>

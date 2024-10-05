@@ -1,44 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-        <%- include('./partials/head') %>
+  <%- include('./partials/head') %>
 
     <title>Document</title>
 </head>
 <style>
   body {
-        background-color: black;
-        color: white;
-    }
+    background-color: black;
+    color: white;
+  }
+  .container {
+            margin-top: 56px; /* This value can be adjusted based on your navbar height */
+        }
 </style>
+
 <body>
-    <%- include('./partials/nav') %>
+  <%- include('./partials/nav') %>
+    <div class="container">
+      password change page
+      <div>
 
-    password change  page
-    <div>
-     
 
-    <h1>Change Password</h1>
-    <form action="/user/setting/change-password" method="POST">
-      <!-- <div>
+        <h1>Change Password</h1>
+        <form action="/user/setting/change-password" method="POST">
+          <!-- <div>
         <label for="currentPassword">Current Password:</label>
         <input type="password" id="currentPassword" name="currentPassword" required>
       </div> -->
-      <div>
-        <label for="newPassword">New Password:</label>
-        <input type="password" id="newPassword" name="newPassword" required>
-      </div>
-      <!-- <div>
+          <div>
+            <label for="newPassword">New Password:</label>
+            <input type="password" id="newPassword" name="newPassword" required>
+          </div>
+          <!-- <div>
         <label for="confirmPassword">Confirm New Password:</label>
         <input type="password" id="confirmPassword" name="confirmPassword" required>
       </div> -->
-      <button type="submit">Change Password</button>
-    </form>
+          <button type="submit">Change Password</button>
+        </form>
+      </div>
+
     </div>
-
-
 
 
     <%- include('./partials/script') %>
 </body>
+
 </html>

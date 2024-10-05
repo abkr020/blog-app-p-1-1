@@ -3,57 +3,54 @@
 
 <head>
   <%- include('./partials/head') %>
-
-    <title>Document</title>
-</head>
-<style>
-  body {
-        background-color: black;
-        color: white;
+  <title>Settings Page</title> <!-- Updated title for clarity -->
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      margin-top: 56px; /* Space for fixed navbar */
+      text-align: center; /* Center the text */
     }
-</style>
+
+    h1 {
+      margin: 20px 0; /* Space above and below the heading */
+    }
+
+    .button {
+      padding: 10px 20px;
+      background-color: #37c263;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px; /* Increase button font size */
+      transition: background-color 0.3s; /* Smooth background transition */
+    }
+
+    .button:hover {
+      background-color: #2da953; /* Darker shade on hover */
+    }
+
+    .form-container {
+      margin-top: 20px; /* Space above the form */
+    }
+  </style>
+</head>
 
 <body>
   <%- include('./partials/nav') %>
 
-    setting page
-    <div>
-      <!-- <li class="nav-item">
-      <a class="nav-link" href="/blog/add-new">add blog</a>
-    </li> -->
-      <!-- <a class="nav-link" href="/user/vfpc">change password</a> -->
-      <!-- <a class="nav-link" href="/user/setting/vfpcs" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: white; text-align: center; border-radius: 5px; text-decoration: none;">Change Password</a> -->
-      <form action="/user/setting/otp-send" method="POST">
-        <button type="submit"
-          style="padding: 10px 20px; background-color: #37c263; color: white; border: none; border-radius: 5px; cursor: pointer;">
-          Change Password
-        </button>
-      </form>
+  <h1>Settings Page</h1> <!-- Added a heading for clarity -->
 
+  <div class="form-container">
+    <form action="/user/setting/otp-send" method="POST">
+      <button type="submit" class="button">Change Password</button>
+    </form>
 
+   
+  </div>
 
-      <!-- <h1>Change Password</h1>
-      <form action="/user/change-password" method="POST">
-         <div>
-        <label for="currentPassword">Current Password:</label>
-        <input type="password" id="currentPassword" name="currentPassword" required>
-      </div> 
-        <div>
-          <label for="newPassword">New Password:</label>
-          <input type="password" id="newPassword" name="newPassword" required>
-        </div>
-        <div>
-        <label for="confirmPassword">Confirm New Password:</label>
-        <input type="password" id="confirmPassword" name="confirmPassword" required>
-      </div> 
-        <button type="submit">Change Password</button>
-      </form> -->
-    </div>
-
-
-
-
-    <%- include('./partials/script') %>
+  <%- include('./partials/script') %>
 </body>
 
 </html>

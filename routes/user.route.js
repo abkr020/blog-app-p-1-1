@@ -50,67 +50,12 @@ router.get('/logout', (req, res) => {
     res.redirect('/')
 })
 router.post('/signup',sendVerificationEmail);
-// router.post('/signup', async (req, res) => {
-//     let { fullname, password, email } = req.body;
-//     let checkuser = await UserModel.findOne({ email });
-//     if (checkuser) return res.status(500).send("user already exist");
 
-//     const otp = crypto.randomInt(100000, 999999);
-
-//     let user = await UserModel.create({
-//         fullname,
-//         email,
-//         otp,
-//         otpExpires: Date.now() + 3600000, // 1 hour
-//         isVerified: false,
-//         password,
-//         password2: password,
-//     })
-
-//     const mailOptions = {
-//         from: process.env.SMTP_MAIL,
-//         to: email,
-//         subject: 'Your OTP Code',
-//         text: `Your OTP code is ${otp}. It will expire in 1 hour.`
-//     };
-   
-
-//     transporter.sendMail(mailOptions, (error, info) => {
-//         if (error) {
-//             console.log(error);
-//             return res.send('Error sending email');
-//         }
-//         res.redirect('/user/verify');
-//     });
-
-
-// });
 router.get('/verify', (req, res) => {
     // app.get('/user/verify', (req, res) => {
     res.render('verify');
 });
 router.post('/verifyCode', verifyCode)
-// router.post('/verify', async (req, res) => {
-//     const { email, otp } = req.body;
-
-//     const user = await UserModel.findOne({
-//         email,
-//         otp,
-//         otpExpires: { $gt: Date.now() },
-//         isVerified: false
-//     });
-
-//     if (user) {
-//         user.isVerified = true;
-//         await user.save();
-//         // res.send('Email successfully verified!');
-//         res.redirect('/user/signin');
-
-
-//     } else {
-//         res.send('Invalid or expired OTP');
-//     }
-// });
 
 router.post('/setting/otp-send', async (req, res) => {
     const user = await UserModel.findById(req.user._id);
@@ -185,34 +130,12 @@ router.post('/setting/vfpc', async (req, res) => {
 
 
 router.post('/signin', signIn)
-// router.post('/signin', async (req, res) => {
-//     let { password, email } = req.body;
-//     console.log("request has came for signin")
 
-//     try {
-//         const token = await UserModel.matchpasswordAndGenerateToken(email, password);
-//         console.log("password matches -- user.route.js")
-
-//         console.log(req.token)
-//         res
-//             .cookie("token", token)
-//             .redirect('/')
-
-//     } catch (error) {
-//         return res.render('signin', {
-//             error: "encorrect email or password --user.route.js",
-//         })
-//     }
-
-// })
 router.get('/setting/pas/change', (req, res) => {
 
     res.render('changepas');
 
-    // res.render('change.pasword', {
-    //     user: req.user,
-    // })
-
+  
 
 })
 router.get('/setting', (req, res) => {
@@ -226,11 +149,7 @@ router.get('/setting', (req, res) => {
 })
 router.post('/setting/change-password', async (req, res) => {
     const { newPassword } = req.body;
-    // const { currentPassword, newPassword, confirmPassword } = req.body;
-    // if (newPassword !== confirmPassword) {
-    //     return res.status(400).send('New passwords do not match.');
-    // }
-    // console.log(req.user);
+   
     const user = await UserModel.findById(req.user._id);
     if (!user) {
         return res.status(400).send('User not found.');

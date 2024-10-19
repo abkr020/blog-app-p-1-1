@@ -1,31 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <%- include('./partials/head') %>
-
+    <%- include('./partials/head') %>
     <title>Document</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            margin-top: 56px; /* Space for fixed navbar */
+        }
+        h1 {
+            text-align: center; /* Center the heading */
+            margin-bottom: 20px; /* Space below the heading */
+        }
+    </style>
 </head>
-<style>
-    body {
-          background-color: black;
-          color: white;
-      }
-  </style>
 <body>
     <%- include('./partials/nav') %>
-    sing in
+    <h1>Sign In</h1>
     <div class="container mt-4">
 
         <form action="/user/signin" method="post">
-            
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Email address</label>
                 <input name="email" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-               
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Password</label>
                 <input name="password" type="password" class="form-control" id="exampleInputPassword1">
+                <div class="form-check mt-2">
+                    <input class="form-check-input" type="checkbox" id="showPassword">
+                    <label class="form-check-label" for="showPassword">Show Password</label>
+                </div>
             </div>
            
             <button type="submit" class="btn btn-primary">Submit</button>
@@ -33,7 +39,17 @@
 
     </div>
 
-
     <%- include('./partials/script') %>
+    
+    <script>
+        // JavaScript to toggle password visibility
+        const showPasswordCheckbox = document.getElementById('showPassword');
+        const passwordInput = document.getElementById('exampleInputPassword1');
+
+        showPasswordCheckbox.addEventListener('change', function() {
+            // Toggle password visibility
+            passwordInput.type = this.checked ? 'text' : 'password';
+        });
+    </script>
 </body>
 </html>

@@ -9,11 +9,25 @@
     body {
           background-color: black;
           color: white;
+          margin-top: 56px; /* Space for fixed navbar */
+
       }
+      h1 {
+            text-align: center; /* Center the heading */
+            margin-bottom: 20px; /* Space below the heading */
+        }
+      .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 0 auto; /* Center the card container */
+            max-width: 1200px; /* Optional: set a max width */
+        }
   </style>
 <body>
     <%- include('./partials/nav') %>
-    signup
+
+    <h1>signup</h1>
     <div class="container mt-4">
 
         <form action="/user/signup" method="post">

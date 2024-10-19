@@ -1,7 +1,9 @@
 require('dotenv').config()
+const session = require('express-session');
+
 const express = require('express')
 const app = express()
-const port = 4000
+
 
 const path = require('path');
 app.set('views', path.join(__dirname, 'views'));
@@ -28,15 +30,27 @@ const BlogModel = require('./models/blog.module.js');
 // app.set('views', path.resolve(__dirname, 'views'));
 
 // app.use(express.static(path.resolve('./public/uploads')))
+
+app.use(session({
+  secret: 'your-secret-key', // Replace with your own secret key
+  resave: false, // Forces session to be saved back to the session store
+  saveUninitialized: true, // Forces a session that is uninitialized to be saved to the store
+  cookie: { secure: false } // Set secure to true if using HTTPS
+}));
+app.use(express.json());
+
 app.use(express.static(path.resolve('./public')))
 
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieparser())
-app.use(checkForAuthenticationCookie("token"))
+app.use(checkForAuthenticationCookie("token1"))
 
 
 app.get('/', async (req, res) => {
-  const allblogs = await BlogModel.find({})
+  // const allblogs = await BlogModel.find({})
+  // const allblogs = await BlogModel.find().populate('createdBy', 'fullname'); // Populate the name of the user
+  const allblogs = await BlogModel.find().populate('createdBy', 'fullname email blueTick');
+
 
   res.render('home', {
     user: req.user,
@@ -48,5 +62,5 @@ app.use('/blog', blogRoute)
 
 
 app.listen(process.env.PORT, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`Example app listening on port ${process.env.PORT}`)
 })

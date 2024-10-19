@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+
+
     <%- include('./partials/head') %>
     <title>Document</title>
     <style>
@@ -43,13 +45,14 @@
         .card-body {
             padding: 15px; /* Add some padding to card body */
         }
+        
     </style>
 </head>
 
 <body>
     <%- include('./partials/nav') %>
 
-    <h1>Home Page</h1> <!-- Centered heading with margin -->
+    <h1>Home Page</h1> 
 
     <div class="card-container">
         <% blogs.reverse().forEach(blog => { %>
@@ -62,6 +65,23 @@
                     <p class="card-text">
                         <%= blog.body %>
                     </p>
+                    <p class="card-author">
+                        <strong>Created by -: </strong>
+                        <% if (blog.createdBy) { %>
+                            <%= blog.createdBy.fullname %>
+                            <% if (blog.createdBy.blueTick) { %>
+                                <span style="color: greenyellow !important;">&#10004; </span>
+                                <% } else { %>
+                                <!-- <span>No blue tick</span> -->
+                            <% } %>
+                        <% } else { %>
+                            Unknown
+                        <% } %>
+                    </p>
+                    
+                    
+                    
+                    
                     <a href="/blog/view/<%= blog._id %>" class="btn btn-primary">View</a>
                 </div>
             </div>

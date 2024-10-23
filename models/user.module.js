@@ -5,12 +5,16 @@ const { createTokenForuser } = require('../somefunctions/createtoken');
 const userSchema = mongoose.Schema({
     fullname: {
         type: String,
-        required: true,
+        // required: true,
     },
     email: {
         type: String,
         required: true,
         unique: true,
+    },
+    blueTick: {
+        type: Boolean,
+        default: false, // Default to false unless specified
     },
     // otp:Number,
     otp:Number,
@@ -22,11 +26,11 @@ const userSchema = mongoose.Schema({
     },
     password: {
         type: String,
-        required: true,
+        // required: true,
     },
     password2: {
         type: String,
-        required: true,
+        // required: true,
     },
     profileImageURL: {
         type: String,

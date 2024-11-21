@@ -43,6 +43,22 @@
         .card-body {
             padding: 15px; /* Add some padding to the card body */
         }
+        /* didnt check this .card-title and .card-text working or not because i dont want to login check it later and also add a dumy account for easy login without otp and simple login to test */
+        .card-title {
+            max-height: 3em; /* Limit title height (approx. 1.5 lines) */
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .card-text {
+            display: -webkit-box; /* Enable truncation for multiple lines */
+            -webkit-line-clamp: 3; /* Show only 3 lines */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
     </style>
 </head>
 

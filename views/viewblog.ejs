@@ -7,15 +7,18 @@
 </head>
 <style>
     body {
-          background-color: black;
-          color: white;
-      }
-  </style>
+        background-color: black;
+        color: white;
+        margin-top: 56px; /* Adjust this value according to the navbar height */
+    }
+    .card {
+        margin-top: 20px; /* Add some margin to the card as well for better spacing */
+    }
+</style>
 <body>
     <%- include('./partials/nav') %>
 
-    profile page
-
+one blog page
     <div>
 
         <div class="card" style="width: 18rem;">
@@ -34,12 +37,19 @@
 
        
     </div>
+    <div>
+        <h3>Author Details</h3>
+        <% if (blog.createdBy) { %>
+            <p>Name: <%= blog.createdBy.fullname %></p> <!-- Display full name if author exists -->
+            <p>Email: <%= blog.createdBy.email %></p>   <!-- Display email if author exists -->
+        <% } else { %>
+            <p>User deleted</p>  <!-- Message when the user is deleted -->
+        <% } %>
+        <p>Created on: <%= blog.createdAt.toDateString() %></p>
+    </div>
     
 
 
-    <% if (locals.user) { %>
-        <%= JSON.stringify(user) %>
-            <% } %>
-    <%- include('./partials/script') %> 
+   
 </body>
 </html>

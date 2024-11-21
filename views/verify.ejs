@@ -8,13 +8,23 @@
     body {
           background-color: black;
           color: white;
+          margin-top: 56px; /* Space for fixed navbar */
+
       }
   </style>
 <body>
+    
     <h1>Verify OTP</h1>
-    <form action="/user/verify" method="post">
+    <% if (locals.error) { %>
+        <div class="container mt-4">
+          <div class="alert alert-danger" role="alert">
+            <%= locals.error %>
+          </div>
+        </div>
+      <% } %>
+    <form action="/user/verifyCode" method="post">
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+        <!-- <input type="email" id="email" name="email" required> -->
         <label for="otp">OTP:</label>
         <input type="text" id="otp" name="otp" required>
         <button type="submit">Verify</button>

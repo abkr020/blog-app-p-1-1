@@ -45,6 +45,20 @@
         .card-body {
             padding: 15px; /* Add some padding to card body */
         }
+        .card-title {
+            max-height: 3em; /* Limit title height (approx. 1.5 lines) */
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .card-text {
+            display: -webkit-box; /* Enable truncation for multiple lines */
+            -webkit-line-clamp: 3; /* Show only 3 lines */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
         
     </style>
 </head>
